@@ -1,5 +1,5 @@
-const express = require("express");
-const axios = require("axios");
+import express from "express";
+import axios from "axios";
 
 const app = express();
 const PORT = 3333;
@@ -22,13 +22,10 @@ app.use("/:param", async (req, res) => {
 
     const response = await axiosProxy.get(param);
     const data = response.data;
-    const dataWithoutError = data.replace(/("[^"]+")\s*:\s*(\d+(\.\d+)?|"[^"]*")\s*("[^"]+")\s*:/g, '$1: $2, $3:')
-    // const jsonData = JSON.parse(dataWithoutError)
+    const updateStringData = data.replace(/"cor":/g, ',"cor":');
 
-
-    res.send(dataWithoutError);
+    res.send(updateStringData);
   } catch (error) {
-    console.error(error);
     res.status(500).send("Erro na solicitação à API.");
   }
 });

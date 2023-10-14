@@ -6,8 +6,9 @@
   "devDependencies": {
     "nodemon": "^3.0.1"
   },
+  "type": "module",
   "scripts": {
-    "start": "node index.cjs",
-    "dev": "nodemon index.cjs"
+    "start": "node index.js",
+    "dev": "nodemon index.js"
   }
 }
